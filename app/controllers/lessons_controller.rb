@@ -2,12 +2,12 @@ class LessonsController < ApplicationController
 
   def index
     lessons = Lesson.all
-    render json: {status: 200, lessons: lessons}
+    render json: lessons.to_json(include: :services)
   end
 
   def show
     lesson = Lesson.find(params[:id])
-    render json: {status: 200, lesson: lesson}
+    render json: lesson.to_json(include: :services)
   end
 
   def create

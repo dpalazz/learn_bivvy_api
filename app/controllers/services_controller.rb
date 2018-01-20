@@ -2,12 +2,12 @@ class ServicesController < ApplicationController
 
   def index
     services = Service.all
-    render json: {status: 200, services: services}
+    render json: services.to_json(include: :lessons)
   end
 
   def show
     service = Service.find(params[:id])
-    render json: {status: 200, service: service}
+    render json: service.to_json(include: :lessons)
   end
 
   def create
