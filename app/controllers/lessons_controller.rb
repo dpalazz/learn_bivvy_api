@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
 
   def index
-    lessons = Lesson.all
+    lessons = Lesson.order(:id)
     render json: lessons.to_json(include: :services)
   end
 
